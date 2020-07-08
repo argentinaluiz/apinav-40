@@ -1,0 +1,123 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "API NAV 4.0",
+        "contact": {
+            "email": "eullercristian@gsaeducacional.com.br"
+        },
+        "version": "Testing"
+    },
+    "paths": {
+        "/api/subjects": {
+            "get": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Lista todas as disciplinas",
+                "produces": [
+                    "application/json"
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Cadastra uma disciplina",
+                "produces": [
+                    "application/json"
+                ],
+                "parameters": [
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Administra\u00e7\u00e3o"
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "example": "ADM2022"
+                                }
+                            },
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "default": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        },
+        "/api/subjects/{subject}": {
+            "put": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Editar uma disciplina",
+                "parameters": [
+                    {
+                        "name": "subject",
+                        "in": "path",
+                        "description": "id da disciplina",
+                        "required": true,
+                        "type": "integer"
+                    },
+                    {
+                        "name": "body",
+                        "in": "body",
+                        "schema": {
+                            "properties": {
+                                "name": {
+                                    "type": "string",
+                                    "example": "Administra\u00e7\u00e3o"
+                                },
+                                "code": {
+                                    "type": "string",
+                                    "example": "ADM2022"
+                                }
+                            },
+                            "type": "string"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "successful operation. User created and rescued"
+                    }
+                }
+            }
+        },
+        "/api/subject/{subject}": {
+            "delete": {
+                "tags": [
+                    "Subject"
+                ],
+                "summary": "Deletar uma disciplina",
+                "parameters": [
+                    {
+                        "name": "subject",
+                        "in": "path",
+                        "description": "id da disciplina",
+                        "required": true,
+                        "type": "integer"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "successful operation"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {}
+}

@@ -20,6 +20,7 @@ class CreateClassroomsTable extends Migration
             $table->foreignId('period_id')->constrained('periods');
             $table->string('code');
             $table->string('name');
+            $table->unique(['company_id','course_id','period_id','name']);
             $table->timestamps();
         });
     }
