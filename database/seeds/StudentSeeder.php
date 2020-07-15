@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Student;
 use Illuminate\Database\Seeder;
 
 class StudentSeeder extends Seeder
@@ -11,6 +12,12 @@ class StudentSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $data = [
+            ['student' => [], 'user' => []]
+        ];
+
+        foreach($data as $row){
+            Student::createWithUser($row);
+        }
     }
 }
