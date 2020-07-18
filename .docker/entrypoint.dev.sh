@@ -10,5 +10,6 @@ if [ ! -f ".env.testing" ]; then
 fi
 composer install
 php artisan key:generate
+php artisan create-databases
 php artisan migrate
 php-fpm

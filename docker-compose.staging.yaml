@@ -1,0 +1,18 @@
+version: '3'
+
+services:
+    app:
+        build: .
+            context: .
+            dockerfile: Dockerfile.prod
+        container_name: app
+        entrypoint: ./.docker/entrypoint.staging.sh
+        volumes:
+            - .:/var/www
+    
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: db
+        environment: 
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=*secret12345

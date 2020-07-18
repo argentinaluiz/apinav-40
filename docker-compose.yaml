@@ -4,12 +4,10 @@ services:
     app:
         build: .
         container_name: apinav-app
-        entrypoint: dockerize ./.docker/entrypoint.sh
+        entrypoint: dockerize ./.docker/entrypoint.dev.sh
         volumes:
             - .:/var/www
             - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini
-        networks:
-            - app-network
 
     nginx:
         build: .docker/nginx
@@ -20,11 +18,18 @@ services:
             - "8000:80"
         volumes:
             - .:/var/www
-        networks:
-            - app-network
         depends_on:
             - app
+    
+    db:
+        image: mcr.microsoft.com/mssql/server:2019-latest
+        container_name: apinav-db
+        environment: 
+            - ACCEPT_EULA=Y
+            - SA_PASSWORD=*secret12345
+        volumes: 
+            - apinav-db:/var/opt/mssql    
 
-networks:
-    app-network:
-        driver: bridge
+volumes:
+    apinav-db:
+        external: true
