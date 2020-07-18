@@ -1,5 +1,6 @@
 #!/bin/bash
 
+php artisan migrate
 # turn on bash's job control
 set -m
 

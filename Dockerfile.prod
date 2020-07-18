@@ -19,8 +19,7 @@ COPY .docker/nginx/nginx.conf /etc/nginx/conf.d
 COPY . .
 
 RUN composer install
-RUN chmod -R 777 /var/www/storage/ && chmod -R 777 /var/www/bootstrap/cache
-RUN php artisan migrate
+RUN chmod -R 777 /var/www/storage && chmod -R 777 /var/www/bootstrap/cache
 
 EXPOSE 80
 ENTRYPOINT [ "/var/www/.docker/prod-entrypoint.sh" ]
