@@ -6,4 +6,6 @@ fi
 if [ ! -f ".env.testing" ]; then
   cp .env.testing.example .env.testing
 fi
-chmod +x .docker/entrypoint.prod.sh && .docker/entrypoint.prod.sh
+
+php artisan create-databases
+.docker/entrypoint.prod.sh

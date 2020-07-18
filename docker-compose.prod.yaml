@@ -6,7 +6,7 @@ services:
             context: .
             dockerfile: Dockerfile.prod
         container_name: app
-        entrypoint: ./.docker/entrypoint.staging.sh
+        entrypoint: dockerize -wait tcp://db:1433 -timeout 40s ./.docker/entrypoint.staging.sh
         volumes:
             - .:/var/www
         depends_on:

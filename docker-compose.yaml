@@ -4,7 +4,7 @@ services:
     app:
         build: .
         container_name: apinav-app
-        entrypoint: dockerize ./.docker/entrypoint.dev.sh
+        entrypoint: dockerize -wait tcp://db:1433 -timeout 40s ./.docker/entrypoint.dev.sh
         volumes:
             - .:/var/www
             - ./.docker/php/custom.ini:/usr/local/etc/php/conf.d/custom.ini

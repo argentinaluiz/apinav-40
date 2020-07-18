@@ -10,15 +10,11 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
-- task: Bash@3
-  inputs:
-   targetType: 'inline'
-   script: chmod +x .docker/entrypoint.staging.sh
 
 - task: Bash@3
   inputs:
    targetType: 'inline'
-   script: docker-compose -f docker-compose.staging.yaml up -d --build
+   script: docker-compose -f docker-compose.prod.yaml up -d --build
 
 - task: Bash@3
   inputs:
@@ -29,4 +25,4 @@ steps:
 - task: Bash@3
   inputs:
    targetType: 'inline'
-   script: docker exec -t app /var/www/vendor/bin/phpunit -c /var/www/phpunit.xml
+   script: docker exec -t app php /var/www/vendor/bin/phpunit -c /var/www/phpunit.xml
