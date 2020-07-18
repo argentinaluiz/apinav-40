@@ -9,6 +9,8 @@ services:
         entrypoint: ./.docker/entrypoint.staging.sh
         volumes:
             - .:/var/www
+        depends_on:
+            - db
     
     db:
         image: mcr.microsoft.com/mssql/server:2019-latest
