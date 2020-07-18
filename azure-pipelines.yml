@@ -15,8 +15,6 @@ steps:
    targetType: 'inline'
    script: chmod +x .docker/entrypoint.staging.sh
 
-
-steps:
 - task: Bash@3
   inputs:
    targetType: 'inline'
