@@ -6,5 +6,4 @@ fi
 if [ ! -f ".env.testing" ]; then
   cp .env.testing.example .env.testing
 fi
-
-./entrypoint.prod.sh
+chmod +x .docker/entrypoint.prod.sh && .docker/entrypoint.prod.sh
