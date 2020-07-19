@@ -13,10 +13,18 @@ services:
             - /var/www
         depends_on:
             - db
-    
+        networks: 
+            - app-network    
+
     db:
         image: mcr.microsoft.com/mssql/server:2019-latest
         container_name: db
         environment: 
             - ACCEPT_EULA=Y
             - SA_PASSWORD=*secret12345
+        networks: 
+            - app-network    
+
+networks:
+    app-network:
+    driver: bridge
