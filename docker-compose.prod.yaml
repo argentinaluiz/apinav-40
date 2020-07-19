@@ -17,11 +17,12 @@ services:
             - app-network    
 
     db:
-        image: mcr.microsoft.com/mssql/server:2017-latest
+        image: mcr.microsoft.com/mssql/server:2019-latest
         container_name: db
         environment: 
             - ACCEPT_EULA=Y
             - SA_PASSWORD=*secret12345
+            - MSSQL_PID=Standard
         networks: 
             - app-network    
 
