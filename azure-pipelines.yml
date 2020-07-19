@@ -19,7 +19,7 @@ steps:
 - task: Bash@3
   inputs:
    targetType: 'inline'
-   script: docker logs app
+   script: docker logs -f --tail 100 app 
 
 - task: Bash@3
   inputs:
