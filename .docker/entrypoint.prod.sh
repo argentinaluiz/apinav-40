@@ -1,7 +1,10 @@
 #!/bin/bash
 
-if [ "$DEPLOY_ENV" = "staging" ]; then
-    dockerize -wait tcp://db:1433 -timeout 40s
+#if [ "$DEPLOY_ENV" = "staging" ]; then
+    
+#fi
+
+dockerize -wait tcp://db:1433 -timeout 40s
     echo "3"
     if [ ! -f ".env" ]; then
         echo "5"
@@ -13,7 +16,6 @@ if [ "$DEPLOY_ENV" = "staging" ]; then
     fi
     echo "10"
     php artisan create-databases
-fi
 
 echo "eeeeeeee"
 php artisan migrate
