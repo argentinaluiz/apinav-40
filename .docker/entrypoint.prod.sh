@@ -1,5 +1,7 @@
 #!/bin/bash
 
+chmod -R 777 /var/www/storage && chmod -R 777 /var/www/bootstrap/cache
+
 if [ "$DEPLOY_ENV" = "staging" ]; then
     if [ ! -f ".env" ]; then
         cp /var/www/.env.example /var/www/.env

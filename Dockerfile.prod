@@ -56,7 +56,6 @@ COPY .docker/nginx/nginx.prod.conf /etc/nginx/conf.d/nginx.conf
 
 COPY . .
 RUN composer install
-RUN chmod -R 777 /var/www/storage && chmod -R 777 /var/www/bootstrap/cache
 
 EXPOSE 80
 ENTRYPOINT [ ".docker/entrypoint.prod.sh" ]

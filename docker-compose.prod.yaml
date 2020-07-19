@@ -2,22 +2,16 @@ version: '3'
 
 services:
     app:
-        build:
-            context: .
-            dockerfile: Dockerfile.prod
-        container_name: app
-        entrypoint: dockerize -wait tcp://db:1433 -timeout 40s ./.docker/entrypoint.prod.sh
-        environment: 
-            - DEPLOY_ENV=staging
-        volumes: 
-            - /var/www
-        depends_on:
-            - db
-
-    db:
-        build: ./.docker/sqlserver
-        container_name: db
-        environment: 
-            - ACCEPT_EULA=Y
-            - SA_PASSWORD=*secret12345
-            - MSSQL_PID=Standard
+        image: laravel-test:latest
+        environment:
+          - APP_NAME=Laravel
+          - APP_ENV=local
+          - APP_KEY=base64:JTD9K5unT0N+riES0Xm3RevxxsQGXZWNVdKup+ijfVk=
+          - APP_DEBUG=true
+          - APP_URL=http://localhost
+          - DB_CONNECTION=mysql
+          - DB_HOST=laravel-test.mysql.database.azure.com
+          - DB_PORT=3306
+          - DB_DATABASE=laravel-test
+          - DB_USERNAME=root_test@laravel-test
+          - DB_PASSWORD=Secret12345
