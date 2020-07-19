@@ -37,6 +37,7 @@ class CreateDatabases extends Command
      */
     public function handle()
     {
+        dd(config('database.connections'));
         config()->set('database.connections.sqlsrv.database', 'master');
         \DB::unprepared("
             IF NOT EXISTS
