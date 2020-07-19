@@ -30,5 +30,5 @@ steps:
   inputs:
     containerRegistry: 'argentinaluiz-connection'
     repository: 'laravel-test'
-    command: 'build'
+    command: buildAndPush
     Dockerfile: '**/Dockerfile.prod'
