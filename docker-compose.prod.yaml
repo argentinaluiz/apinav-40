@@ -15,15 +15,9 @@ services:
             - db
 
     db:
-        image: mcr.microsoft.com/mssql/server:2019-latest
+        build: ./.docker/sqlserver
         container_name: db
         environment: 
             - ACCEPT_EULA=Y
             - SA_PASSWORD=*secret12345
             - MSSQL_PID=Standard
-        volumes: 
-            - dbdata:/var/opt/mssql    
-
-volumes: 
-    dbdata:
-        external: true

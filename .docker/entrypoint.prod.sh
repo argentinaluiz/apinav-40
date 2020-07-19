@@ -1,22 +1,26 @@
 #!/bin/bash
 
-
-    
-
 if [ "$DEPLOY_ENV" = "staging" ]; then
     if [ ! -f ".env" ]; then
-        echo "8"
         cp /var/www/.env.example /var/www/.env
     fi
     if [ ! -f ".env.testing" ]; then
-        echo "12"
         cp /var/www/.env.testing.example /var/www/.env.testing
     fi
-    echo "15"
-    php artisan create-databases
 fi
 
-php artisan migrate
+for i in {1..50};
+do
+    php artisan migrate
+    if [ $? -eq 0 ]
+    then
+        echo "Migrated"
+        break
+    else
+        echo "Not migrated, retry again..."
+        sleep 1
+    fi
+done
 # turn on bash's job control
 set -m
 
