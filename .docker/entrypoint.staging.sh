@@ -1,10 +1,10 @@
 #!/bin/bash
-echo "teste"
+
 if [ ! -f ".env" ]; then
-  cp .env.example .env
+  cp /var/www/.env.example /var/www/.env
 fi
 if [ ! -f ".env.testing" ]; then
-  cp .env.testing.example .env.testing
+  cp /var/www/.env.testing.example /var/www/.env.testing
 fi
 
 php artisan create-databases
