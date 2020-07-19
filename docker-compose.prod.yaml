@@ -23,6 +23,8 @@ services:
             - ACCEPT_EULA=Y
             - SA_PASSWORD=*secret12345
             - MSSQL_PID=Standard
+        volumes: 
+            - dbdata:/var/opt/mssql    
         networks: 
             - app-network    
 
