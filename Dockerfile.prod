@@ -47,8 +47,6 @@ RUN ln -s /usr/local/etc/php/php.ini-development /usr/local/etc/php/php.ini
 
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
-RUN usermod -u 1000 www-data
-
 WORKDIR /var/www
 
 RUN rm -rf /var/www/html && ln -s public html
