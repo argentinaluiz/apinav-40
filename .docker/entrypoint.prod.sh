@@ -1,4 +1,5 @@
 #!/bin/bash
+
 if [ "$DEPLOY_ENV" = "staging" ]; then
     dockerize -wait tcp://db:1433 -timeout 40s ./entrypoint.staging.sh
 fi
