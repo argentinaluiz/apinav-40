@@ -14,17 +14,12 @@ steps:
 - task: Bash@3
   inputs:
    targetType: 'inline'
-   script: docker volume create dbdata
-
-- task: Bash@3
-  inputs:
-   targetType: 'inline'
    script: docker-compose -f docker-compose.prod.yaml up -d --build
 
-- task: Bash@3
-  inputs:
-   targetType: 'inline'
-   script: docker logs -f --tail 100 app 
+#- task: Bash@3
+#  inputs:
+#   targetType: 'inline'
+#   script: docker logs -f --tail 100 app 
 
 - task: Bash@3
   inputs:
