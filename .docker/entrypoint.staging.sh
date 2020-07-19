@@ -6,7 +6,8 @@ fi
 if [ ! -f ".env.testing" ]; then
   cp /var/www/.env.testing.example /var/www/.env.testing
 fi
-
+cat .env
+cat .env.testing
 ls -a /var/www
 
 php artisan create-databases
