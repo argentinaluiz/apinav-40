@@ -1,8 +1,20 @@
 #!/bin/bash
 
 if [ "$DEPLOY_ENV" = "staging" ]; then
-    dockerize -wait tcp://db:1433 -timeout 40s /var/www/.docker/entrypoint.staging.sh
+    dockerize -wait tcp://db:1433 -timeout 40s
+    echo "3"
+    if [ ! -f ".env" ]; then
+        echo "5"
+        cp /var/www/.env.example /var/www/.env
+    fi
+    if [ ! -f ".env.testing" ]; then
+        echo "6"
+        cp /var/www/.env.testing.example /var/www/.env.testing
+    fi
+    echo "10"
+    php artisan create-databases
 fi
+
 echo "eeeeeeee"
 php artisan migrate
 # turn on bash's job control
