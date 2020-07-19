@@ -32,3 +32,6 @@ steps:
     repository: 'laravel-test'
     command: buildAndPush
     Dockerfile: '**/Dockerfile.prod'
+    tags: |
+      $(Build.BuildId)
+      latest
