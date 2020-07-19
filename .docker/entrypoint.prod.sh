@@ -5,11 +5,14 @@
 
 if [ "$DEPLOY_ENV" = "staging" ]; then
     if [ ! -f ".env" ]; then
+        echo "8"
         cp /var/www/.env.example /var/www/.env
     fi
     if [ ! -f ".env.testing" ]; then
+        echo "12"
         cp /var/www/.env.testing.example /var/www/.env.testing
     fi
+    echo "15"
     php artisan create-databases
 fi
 
