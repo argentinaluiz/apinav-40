@@ -8,4 +8,3 @@ if [ ! -f ".env.testing" ]; then
 fi
 
 php artisan create-databases
-.docker/entrypoint.prod.sh
