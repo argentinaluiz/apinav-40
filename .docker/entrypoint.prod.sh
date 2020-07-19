@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [ "$DEPLOY_ENV" = "staging" ]; then
-    dockerize -wait tcp://db:1433 -timeout 40s ./entrypoint.staging.sh
+    dockerize -wait tcp://db:1433 -timeout 40s /var/www/.docker/entrypoint.staging.sh
 fi
 php artisan migrate
 # turn on bash's job control
